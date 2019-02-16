@@ -17,26 +17,19 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          {
-            loader: 'style-loader',
-            options: {
-              insertAt: 'top'
-            }
-          },
-          // MiniCssExtractPlugin.loader,
+          MiniCssExtractPlugin.loader,
           'css-loader',
           'postcss-loader'
         ]
       },
       {
         test: /\.less$/,
-        use: ['style-loader', 'css-loader', 'less-loader', 'postcss-loader']
-        // use: [
-        //   MiniCssExtractPlugin.loader,
-        //   'css-loader',
-        //   'less-loader',
-        //   'postcss-loader'
-        // ]
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'less-loader',
+          'postcss-loader'
+        ]
       }
     ]
   },
@@ -48,10 +41,10 @@ module.exports = {
         removeAttributeQuotes: true,
         collapseWhitespace: true
       },
-      // hash: true
+      hash: true
     }),
-    // new MiniCssExtractPlugin({
-    //   filename: 'main.css'
-    // })
+    new MiniCssExtractPlugin({
+      filename: 'main.css'
+    })
   ]
 }
