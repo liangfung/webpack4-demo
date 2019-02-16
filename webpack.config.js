@@ -5,7 +5,7 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyjsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   entry: './src/index.js',
   output: {
     filename: '[name].[hash:8].js',
