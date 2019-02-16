@@ -14,16 +14,16 @@ module.exports = {
   devServer: {
     port: 7000
   },
-  optimization: {
-    minimizer: [
-      new UglifyjsPlugin({
-        cache: true,
-        sourceMap: true,
-        parallel: true
-      }),
-      new OptimizeCssAssetsPlugin()
-    ]
-  },
+  // optimization: {
+  //   minimizer: [
+  //     new UglifyjsPlugin({
+  //       cache: true,
+  //       sourceMap: true,
+  //       parallel: true
+  //     }),
+  //     new OptimizeCssAssetsPlugin()
+  //   ]
+  // },
   module: {
     rules: [
       {
