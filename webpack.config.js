@@ -1,6 +1,8 @@
 const path = require('path')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const UglifyjsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   mode: 'production',
@@ -11,6 +13,16 @@ module.exports = {
   },
   devServer: {
     port: 7000
+  },
+  optimization: {
+    minimizer: [
+      new UglifyjsPlugin({
+        cache: true,
+        sourceMap: true,
+        parallel: true
+      }),
+      new OptimizeCssAssetsPlugin()
+    ]
   },
   module: {
     rules: [
