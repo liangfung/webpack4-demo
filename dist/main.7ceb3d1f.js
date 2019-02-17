@@ -94,7 +94,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nconst str = 'hello world'\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (str);\n\n//# sourceURL=webpack:///./src/a.js?");
+eval("__webpack_require__.r(__webpack_exports__);\nvar str = 'hello world';\n/* harmony default export */ __webpack_exports__[\"default\"] = (str);\n\n//# sourceURL=webpack:///./src/a.js?");
 
 /***/ }),
 
@@ -106,7 +106,7 @@ eval("__webpack_require__.r(__webpack_exports__);\nconst str = 'hello world'\n\n
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nconst str = '2222'\n/* harmony default export */ __webpack_exports__[\"default\"] = (str);\n\n//# sourceURL=webpack:///./src/b.js?");
+eval("__webpack_require__.r(__webpack_exports__);\nvar str = '2222';\n/* harmony default export */ __webpack_exports__[\"default\"] = (str);\n\n//# sourceURL=webpack:///./src/b.js?");
 
 /***/ }),
 
@@ -118,7 +118,7 @@ eval("__webpack_require__.r(__webpack_exports__);\nconst str = '2222'\n/* harmon
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./a */ \"./src/a.js\");\n/* harmony import */ var _b__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./b */ \"./src/b.js\");\n\n\n// import('./c')\nconsole.log(_a__WEBPACK_IMPORTED_MODULE_0__[\"default\"] + _b__WEBPACK_IMPORTED_MODULE_1__[\"default\"])\n\n\n// import('./style/index.css')  // 动态yinru\n// import('./style/b.less')\n__webpack_require__(/*! ./style/index.css */ \"./src/style/index.css\")\n__webpack_require__(/*! ./style/b.less */ \"./src/style/b.less\")\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./a */ \"./src/a.js\");\n/* harmony import */ var _b__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./b */ \"./src/b.js\");\nvar _class, _temp;\n\nfunction asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }\n\nfunction _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"next\", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"throw\", err); } _next(undefined); }); }; }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\n\n // import('./c')\n\nconsole.log(_a__WEBPACK_IMPORTED_MODULE_0__[\"default\"] + _b__WEBPACK_IMPORTED_MODULE_1__[\"default\"]); // import('./style/index.css')  // 动态yinru\n// import('./style/b.less')\n\n__webpack_require__(/*! ./style/index.css */ \"./src/style/index.css\");\n\n__webpack_require__(/*! ./style/b.less */ \"./src/style/b.less\");\n\nvar fn = function fn() {\n  console.log('this is fn');\n};\n\nfn();\n\nvar Foo = log(_class = (_temp =\n/*#__PURE__*/\nfunction () {\n  function Foo() {\n    _classCallCheck(this, Foo);\n\n    this.name = 'a';\n  }\n\n  _createClass(Foo, [{\n    key: \"say\",\n    value: function say() {\n      console.log(this.name);\n    }\n  }]);\n\n  return Foo;\n}(), _temp)) || _class;\n\nfunction log(target) {\n  console.log(target);\n}\n\nvar foo = new Foo();\nfoo.say();\n\nvar bar =\n/*#__PURE__*/\nfunction () {\n  var _ref = _asyncToGenerator(\n  /*#__PURE__*/\n  regeneratorRuntime.mark(function _callee() {\n    return regeneratorRuntime.wrap(function _callee$(_context) {\n      while (1) {\n        switch (_context.prev = _context.next) {\n          case 0:\n            return _context.abrupt(\"return\", 3);\n\n          case 1:\n          case \"end\":\n            return _context.stop();\n        }\n      }\n    }, _callee, this);\n  }));\n\n  return function bar() {\n    return _ref.apply(this, arguments);\n  };\n}();\n\nbar();\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
