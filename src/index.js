@@ -7,8 +7,8 @@
 
 // // import('./style/index.css')  // 动态yinru
 // // import('./style/b.less')
-// require('./style/index.css')
-// require('./style/b.less')
+require('./style/index.css')
+require('./style/b.less')
 
 // let fn = () => {console.log('this is fn')}
 // fn()
@@ -56,8 +56,8 @@
  * 但这时候想同时  require('jquery')的话，会导致jquery依赖打包到bundle中
  * 应该要是用externals声明，使得jquery不打包
  */
-import _$ from 'jquery'
+// import _$ from 'jquery'
 
-console.log(_$)  // 引入但不打包
-console.log($)   // 挂在window下
-console.log(window.$)  // 挂在window下
+// console.log(_$)  // 引入但不打包
+// console.log($)   // 挂在window下
+// console.log(window.$)  // 挂在window下

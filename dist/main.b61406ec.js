@@ -90,22 +90,32 @@
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ \"jquery\");\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);\n// import str from './a'\n// import str2 from './b'\n// require('@babel/polyfill')\n// // import('./c')\n// console.log(str + str2)\n// // import('./style/index.css')  // 动态yinru\n// // import('./style/b.less')\n// require('./style/index.css')\n// require('./style/b.less')\n// let fn = () => {console.log('this is fn')}\n// fn()\n// @log\n// class Foo {\n//   name = 'a'\n//   say() {\n//     console.log(this.name)\n//   }\n// }\n// function log(target) {\n//   console.log(target)\n// }\n// let foo = new Foo()\n// foo.say()\n// const bar = async() => {\n//   return 3\n// }\n// bar()\n// console.log('abc'.includes('c'))\n// 方法一：expose-loader\n\n/*使用内联loader的写法，挂在window对象下*/\n// import $ from 'expose-loader?$!jquery'\n\n/* 在webpack config的module中写loader规则，不用写内联的形式 */\n// import $ from 'jquery'\n// 方法二：wepback.provider\n\n/* 在webpack config的plugins里面写，为每个模块注入jquery */\n// 方法三： externals\n\n/**\n * 在html中用script引入之后，jquery变量就已经挂到window下了\n * 但这时候想同时  require('jquery')的话，会导致jquery依赖打包到bundle中\n * 应该要是用externals声明，使得jquery不打包\n */\n\nconsole.log(jquery__WEBPACK_IMPORTED_MODULE_0___default.a);\nconsole.log(window.$);\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("// import str from './a'\n// import str2 from './b'\n// require('@babel/polyfill')\n// // import('./c')\n// console.log(str + str2)\n// // import('./style/index.css')  // 动态yinru\n// // import('./style/b.less')\n__webpack_require__(/*! ./style/index.css */ \"./src/style/index.css\");\n\n__webpack_require__(/*! ./style/b.less */ \"./src/style/b.less\"); // let fn = () => {console.log('this is fn')}\n// fn()\n// @log\n// class Foo {\n//   name = 'a'\n//   say() {\n//     console.log(this.name)\n//   }\n// }\n// function log(target) {\n//   console.log(target)\n// }\n// let foo = new Foo()\n// foo.say()\n// const bar = async() => {\n//   return 3\n// }\n// bar()\n// console.log('abc'.includes('c'))\n// 方法一：expose-loader\n\n/*使用内联loader的写法，挂在window对象下*/\n// import $ from 'expose-loader?$!jquery'\n\n/* 在webpack config的module中写loader规则，不用写内联的形式 */\n// import $ from 'jquery'\n// 方法二：wepback.provider\n\n/* 在webpack config的plugins里面写，为每个模块注入jquery */\n// 方法三： externals\n\n/**\n * 在html中用script引入之后，jquery变量就已经挂到window下了\n * 但这时候想同时  require('jquery')的话，会导致jquery依赖打包到bundle中\n * 应该要是用externals声明，使得jquery不打包\n */\n// import _$ from 'jquery'\n// console.log(_$)  // 引入但不打包\n// console.log($)   // 挂在window下\n// console.log(window.$)  // 挂在window下\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
-/***/ "jquery":
-/*!********************!*\
-  !*** external "$" ***!
-  \********************/
+/***/ "./src/style/b.less":
+/*!**************************!*\
+  !*** ./src/style/b.less ***!
+  \**************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = $;\n\n//# sourceURL=webpack:///external_%22$%22?");
+eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/style/b.less?");
+
+/***/ }),
+
+/***/ "./src/style/index.css":
+/*!*****************************!*\
+  !*** ./src/style/index.css ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/style/index.css?");
 
 /***/ })
 

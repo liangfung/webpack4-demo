@@ -11,6 +11,7 @@ module.exports = {
   output: {
     filename: '[name].[hash:8].js',
     path: path.resolve(__dirname, './dist'), // 绝对路径
+    // publicPath: '/assets/'
   },
   externals: {
     jquery: '$'
@@ -34,6 +35,16 @@ module.exports = {
       //   test: require.resolve('jquery'),
       //   use: 'expose-loader?$'
       // },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 30 * 1024,
+            outputPath: 'img/'
+          }
+        }
+      },
       {
         test: /\.js$/,
         use: [
@@ -76,12 +87,12 @@ module.exports = {
       filename: 'index.html',
       minify: {
         removeAttributeQuotes: true,
-        collapseWhitespace: true
+        // collapseWhitespace: true
       },
       hash: true
     }),
     new MiniCssExtractPlugin({
-      filename: 'main.css'
+      filename: 'style/main.css'
     }),
     // new webpack.ProvidePlugin({
     //   '$': 'jquery'
