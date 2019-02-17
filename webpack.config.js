@@ -3,6 +3,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyjsPlugin = require('uglifyjs-webpack-plugin')
+const webpack = require('webpack')
 
 module.exports = {
   mode: 'development',
@@ -10,6 +11,9 @@ module.exports = {
   output: {
     filename: '[name].[hash:8].js',
     path: path.resolve(__dirname, './dist'), // 绝对路径
+  },
+  externals: {
+    jquery: '$'
   },
   devServer: {
     port: 7000
@@ -26,6 +30,10 @@ module.exports = {
   },
   module: {
     rules: [
+      // {
+      //   test: require.resolve('jquery'),
+      //   use: 'expose-loader?$'
+      // },
       {
         test: /\.js$/,
         use: [
@@ -74,6 +82,9 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: 'main.css'
-    })
+    }),
+    // new webpack.ProvidePlugin({
+    //   '$': 'jquery'
+    // })
   ]
 }
