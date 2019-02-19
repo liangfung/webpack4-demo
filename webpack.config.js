@@ -5,6 +5,7 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyjsPlugin = require('uglifyjs-webpack-plugin')
 const webpack = require('webpack')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   mode: 'development',
@@ -96,7 +97,13 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'style/main.css'
     }),
-    new CleanWebpackPlugin('./dist')
+    new CleanWebpackPlugin('./dist'),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, './note'),
+        to: './note'
+      }
+    ])
     // new webpack.ProvidePlugin({
     //   '$': 'jquery'
     // })
