@@ -1,8 +1,8 @@
-// import str from './a'
-// import str2 from './b'
-// require('@babel/polyfill')
-// // import('./c')
-// console.log(str + str2)
+import str from './a'
+import str2 from './b'
+require('@babel/polyfill')
+// import('./c')
+console.log(str + str2)
 
 
 // // import('./style/index.css')  // 动态yinru
@@ -61,3 +61,4 @@ require('./style/b.less')
 // console.log(_$)  // 引入但不打包
 // console.log($)   // 挂在window下
 // console.log(window.$)  // 挂在window下
+

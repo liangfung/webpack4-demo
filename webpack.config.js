@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyjsPlugin = require('uglifyjs-webpack-plugin')
 const webpack = require('webpack')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
   mode: 'development',
@@ -55,7 +56,8 @@ module.exports = {
               plugins: [
                 ["@babel/plugin-proposal-decorators", { "legacy": true }],
                 ["@babel/plugin-proposal-class-properties", { "loose": true }],
-                '@babel/plugin-transform-runtime'
+                '@babel/plugin-transform-runtime',
+                '@babel/plugin-syntax-dynamic-import'
               ]
             }
           }
@@ -94,6 +96,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'style/main.css'
     }),
+    new CleanWebpackPlugin('./dist')
     // new webpack.ProvidePlugin({
     //   '$': 'jquery'
     // })
