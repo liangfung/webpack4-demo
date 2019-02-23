@@ -103,7 +103,8 @@ module.exports = {
         from: path.resolve(__dirname, './note'),
         to: './note'
       }
-    ])
+    ]),
+    new webpack.BannerPlugin('author: liangfung')
     // new webpack.ProvidePlugin({
     //   '$': 'jquery'
     // })
