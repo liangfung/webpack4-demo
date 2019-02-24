@@ -26,13 +26,6 @@ module.exports = {
 
 ## happyPack
 多线程打包
-```js
-module.exports = {
-  module: {
-    
-  }
-}
-```
 
 ## dllPlugin
 dll是要讲指定的文件抽离出来，生成动态链接映射文件，然后在打包的时候，动态引用抽离出来的dll文件，不打包到bundle文件中

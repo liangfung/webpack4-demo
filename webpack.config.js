@@ -6,6 +6,7 @@ const UglifyjsPlugin = require('uglifyjs-webpack-plugin')
 const webpack = require('webpack')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const HappyPack = require('happypack')
 
 module.exports = {
   mode: 'development',
@@ -22,7 +23,7 @@ module.exports = {
   // },
   devServer: {
     port: 7000,
-    open: true,
+    // open: true,
     contentBase: './dist'
   },
   optimization: {
@@ -43,6 +44,11 @@ module.exports = {
       //   use: 'expose-loader?$'
       // },
       {
+        test: /\.js$/,
+        use: 'happypack/loader?id=js',
+        exclude: /node_modules/
+      },
+      {
         test: /\.(png|jpg|gif)$/,
         use: {
           loader: 'url-loader',
@@ -51,27 +57,6 @@ module.exports = {
             outputPath: 'img/'
           }
         }
-      },
-      {
-        test: /\.js$/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: [
-                '@babel/preset-env',
-                '@babel/preset-react'
-              ],
-              plugins: [
-                ["@babel/plugin-proposal-decorators", { "legacy": true }],
-                ["@babel/plugin-proposal-class-properties", { "loose": true }],
-                '@babel/plugin-transform-runtime',
-                '@babel/plugin-syntax-dynamic-import'
-              ]
-            }
-          }
-        ],
-        exclude: /node_modules/
       },
       {
         test: /\.css$/,
@@ -93,8 +78,28 @@ module.exports = {
     ]
   },
   plugins: [  // 数组，放插件实例
-    new webpack.DllReferencePlugin({
-      manifest: path.resolve(__dirname, 'dist', 'manifest.json')
+    // new webpack.DllReferencePlugin({ // manifest中有的依赖，不会打包到bundle.js中
+    //   manifest: path.resolve(__dirname, 'dist', 'manifest.json')
+    // }),
+    new HappyPack({
+      id: 'js',
+      use: [
+        {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              '@babel/preset-env',
+              '@babel/preset-react'
+            ],
+            plugins: [
+              ["@babel/plugin-proposal-decorators", { "legacy": true }],
+              ["@babel/plugin-proposal-class-properties", { "loose": true }],
+              '@babel/plugin-transform-runtime',
+              '@babel/plugin-syntax-dynamic-import'
+            ]
+          }
+        }
+      ]
     }),
     new HTMLWebpackPlugin({
       template: './src/index.html',
