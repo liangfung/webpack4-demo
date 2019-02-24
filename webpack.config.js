@@ -13,13 +13,17 @@ module.exports = {
   output: {
     filename: '[name].[hash:8].js',
     path: path.resolve(__dirname, './dist'), // 绝对路径
+    library: 'a',
+    // libraryTarget: 'umd'
     // publicPath: '/assets/'
   },
   // externals: {
   //   jquery: '$'
   // },
   devServer: {
-    port: 7000
+    port: 7000,
+    open: true,
+    contentBase: './dist'
   },
   optimization: {
     minimizer: [
@@ -54,7 +58,10 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env'],
+              presets: [
+                '@babel/preset-env',
+                '@babel/preset-react'
+              ],
               plugins: [
                 ["@babel/plugin-proposal-decorators", { "legacy": true }],
                 ["@babel/plugin-proposal-class-properties", { "loose": true }],
@@ -86,6 +93,9 @@ module.exports = {
     ]
   },
   plugins: [  // 数组，放插件实例
+    new webpack.DllReferencePlugin({
+      manifest: path.resolve(__dirname, 'dist', 'manifest.json')
+    }),
     new HTMLWebpackPlugin({
       template: './src/index.html',
       filename: 'index.html',
@@ -98,7 +108,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'style/main.css'
     }),
-    new CleanWebpackPlugin('./dist'),
+    // new CleanWebpackPlugin('./dist'),
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, './note'),
