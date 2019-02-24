@@ -15,9 +15,9 @@ module.exports = {
     path: path.resolve(__dirname, './dist'), // 绝对路径
     // publicPath: '/assets/'
   },
-  // externals: {
-  //   jquery: '$'
-  // },
+  externals: {
+    jquery: '$'
+  },
   devServer: {
     port: 7000
   },
@@ -32,7 +32,6 @@ module.exports = {
     ]
   },
   module: {
-    noParse: /jquery/,
     rules: [
       // {
       //   test: require.resolve('jquery'),
@@ -105,8 +104,7 @@ module.exports = {
         to: './note'
       }
     ]),
-    new webpack.BannerPlugin('author: liangfung'),
-    new webpack.IgnorePlugin(/\.\/locale/, /moment/)
+    new webpack.BannerPlugin('author: liangfung')
     // new webpack.ProvidePlugin({
     //   '$': 'jquery'
     // })
