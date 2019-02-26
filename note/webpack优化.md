@@ -27,10 +27,37 @@ module.exports = {
 ## happyPack
 多线程打包
 ```js
+const HappyPack = require('happypack')
+
 module.exports = {
   module: {
-    
-  }
+    rules: [
+      {
+        test: /\.js$/,
+        use: {
+          loader: 'happypack/loader?id=js'
+        },
+        exclude: /node_modules/
+      }
+    ]
+  },
+  plugins: [
+    new HappyPack({
+      id: 'js',
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env']
+          plugins: [
+              ["@babel/plugin-proposal-decorators", { "legacy": true }],
+              ["@babel/plugin-proposal-class-properties", { "loose": true }],
+              '@babel/plugin-transform-runtime',
+              '@babel/plugin-syntax-dynamic-import'
+            ]
+        }
+      }
+    })
+  ]
 }
 ```
 
@@ -68,10 +95,52 @@ module.exports = {
 }
 ```
 
-## chunkSplit
+## tree shaking
+使用es module的import语法来更好的实现tree shaking
 
+## scope hosting
+
+
+## splitChunks
+使用`optimization.splitChunks`
+其中，使用`cacheGroups`能够很好的分割chunk
+### splitChunks的默认配置
+- 抽离出来的新chunk必须是有共用的或者是node_modules中的
+- 大于30kb的抽离出来
+- 按需请求时，最大并行请求数是5
+- 首页加载时，最大并行请求数是3
+
+```js
+module.exports = {
+  //...
+  optimization: {
+    splitChunks: {
+      chunks: 'async',
+      minSize: 30000,
+      maxSize: 0,
+      minChunks: 1,
+      maxAsyncRequests: 5, // Maximum number of parallel requests when on-demand loading.
+      maxInitialRequests: 3,  // Maximum number of parallel requests at an entry point
+      automaticNameDelimiter: '~',
+      name: true,
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
+        }
+      }
+    }
+  }
+};
+```
 
 ## codeSplit(懒加载)
-
+使用 `dynamic import` 动态加载
+(或者使用require.ensure，不过这是野生的)
 
 ## hot-reload-replacement

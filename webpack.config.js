@@ -12,9 +12,9 @@ module.exports = {
   mode: 'development',
   entry: './src/index.js',
   output: {
-    filename: '[name].[hash:8].js',
+    filename: '[name].[contenthash:8].js',
     path: path.resolve(__dirname, './dist'), // 绝对路径
-    library: 'a',
+    // library: 'a',
     // libraryTarget: 'umd'
     // publicPath: '/assets/'
   },
@@ -34,7 +34,24 @@ module.exports = {
         parallel: true
       }),
       new OptimizeCssAssetsPlugin()
-    ]
+    ],
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          name: 'commons',
+          chunks: 'all',
+          priority: 1,
+          minSize: 0,
+          minChunks: 2
+        },
+        vendors: { // 第三方公共代码
+          chunks: 'all',
+          test: /[\\/]node_modules[\\/]/,
+          priority: 10,
+          name: 'vendor'
+        }
+      }
+    }
   },
   module: {
     noParse: /jquery/,
@@ -113,13 +130,13 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'style/main.css'
     }),
-    // new CleanWebpackPlugin('./dist'),
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, './note'),
-        to: './note'
-      }
-    ]),
+    new CleanWebpackPlugin('./dist'),
+    // new CopyWebpackPlugin([
+    //   {
+    //     from: path.resolve(__dirname, './note'),
+    //     to: './note'
+    //   }
+    // ]),
     new webpack.BannerPlugin('author: liangfung'),
     new webpack.IgnorePlugin(/\.\/locale/, /moment/)
     // new webpack.ProvidePlugin({

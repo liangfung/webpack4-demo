@@ -14,7 +14,11 @@
 // require('./noParse')
 
 /** 使用webpack的dll */
-require('./dllPlugin')
+// require('./dllPlugin')
 
 /** happypack 多线程打包 */
-require('./happypack')
+// require('./happypack')
+
+/** 使用 optimization.splitChunks */
+import('./splitChunk/page1')
+import('./splitChunk/page2')
