@@ -20,5 +20,11 @@
 // require('./happypack')
 
 /** 使用 optimization.splitChunks */
-import('./splitChunk/page1')
-import('./splitChunk/page2')
+// import('./splitChunk/page1')
+// import('./splitChunk/page2')
+
+async function foo() {
+  await 1
+  return 2
+}
+console.log(foo().then(console.log))
